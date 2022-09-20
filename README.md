@@ -1,4 +1,4 @@
-# installation
+# installation (IGNORE, TO BE UPDATED)
 
 ## login
 ```
@@ -22,13 +22,13 @@ bash Cytoscape_3_9_1_unix.sh
 
 # usage
 ```
-ssh -X noah-login  # note: use campus intranet because forwarding X11 is very slow on wifi
-
+ssh -X codon-login  # note: use campus intranet because forwarding X11 is very slow on wifi
+module load openjdk-11.0.1-gcc-9.3.0-unymjzh
 
 MEM_IN_GB=40  # set to how many GBs you think cytoscape will use
 
 # run cytoscape in a worker node (type yes for any authenticity of host issues)
-bsub -XF -I -R "select[mem>$((MEM_IN_GB*1024))] rusage[mem=$((MEM_IN_GB*1024))]" -M$((MEM_IN_GB*1024)) -o cytoscape_gui_.o -e cytoscape_gui_.e -J cytoscape_gui JAVA_HOME="/hps/nobackup/research/zi/leandro/adrian/jdk-11.0.2" /hps/nobackup/research/zi/leandro/adrian/Cytoscape_v3.9.1/cytoscape.sh
+bsub -q gui -XF -I -R "select[mem>$((MEM_IN_GB*1024))] rusage[mem=$((MEM_IN_GB*1024))]" -M$((MEM_IN_GB*1024)) -o cytoscape_gui_.o -e cytoscape_gui_.e -J cytoscape_gui /hps/nobackup/iqbal/leandro/adrian/cytoscape/cytoscape_installation/cytoscape.sh
 
 # now cytoscape should open on your local screen and you can use it normally
 
